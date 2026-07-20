@@ -3,14 +3,19 @@ package com.chaicode.variables;
 /**
  * FitTrack Health Dashboard
  *
- * <p>A fitness app shows each user's BMI (Body Mass Index) on their profile.
+ * <p>
+ * A fitness app shows each user's BMI (Body Mass Index) on their profile.
  *
- * <p>Formula: BMI = weightKg / (heightM × heightM) where heightM = heightCm / 100.0
+ * <p>
+ * Formula: BMI = weightKg / (heightM × heightM) where heightM = heightCm /
+ * 100.0
  *
- * <p>Rules:
+ * <p>
+ * Rules:
  * <ul>
- *   <li>Return BMI rounded to 1 decimal place using Math.round(bmi * 10.0) / 10.0</li>
- *   <li>If heightCm or weightKg is zero or negative, return -1.0</li>
+ * <li>Return BMI rounded to 1 decimal place using Math.round(bmi * 10.0) /
+ * 10.0</li>
+ * <li>If heightCm or weightKg is zero or negative, return -1.0</li>
  * </ul>
  *
  * @param weightKg weight in kilograms
@@ -19,10 +24,17 @@ package com.chaicode.variables;
  */
 public final class FitnessProfile {
 
-    private FitnessProfile() {}
+    private FitnessProfile() {
+    }
 
     public static double calculateBmi(double weightKg, int heightCm) {
-        // Your code here
-        return 0.0;
+
+        if (weightKg <= 0 || heightCm <= 0) {
+            return -1.0;
+        }
+
+        double heightM = heightCm / 100.0;
+        double bmi = weightKg / (heightM * heightM);
+        return Math.round(bmi * 10.0) / 10.0;
     }
 }
